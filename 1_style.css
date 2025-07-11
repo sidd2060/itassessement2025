@@ -122,29 +122,7 @@ nav a:hover{
   background-color: rgba(0,0,0,0.8);
 }
 
-/* Footer styles (optional - from your original) */
-/* .footer {
-  background: purple;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.container {
-  width: 95%;
-  background: white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.content {
-  display: flex;
-  flex-wrap: wrap;
-} */
-
-/* Add your existing .newsletter-section, .contact-section, etc. here if needed */
-
-/* ✅ Footer Section Enhancement */
 .footer {
   background: #1c1c1c;
   color: #eee;
