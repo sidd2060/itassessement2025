@@ -1,0 +1,202 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - TechPulse</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="5_contact.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">TechPulse</div>
+    <nav>
+      <ul>
+        <li><a href="1_index.html">Home</a></li>
+        <li><a href="2_about.html">About Us</a></li>
+        <li><a href="4_gallary.html">Gallery</a></li>
+        <li><a href="3_product.html">Shop Now</a></li>
+        <li><a href="5_contact.html" class="active">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-info">
+      <h1>Get in Touch</h1>
+      <p>Have questions or need help? Reach out to our support team.</p>
+      <div class="details">
+        <div>
+          <h3>Phone</h3>
+          <p>+977 1234 567890</p>
+        </div>
+        <div>
+          <h3>Email</h3>
+          <p>support@techpulse.com</p>
+        </div>
+        <div>
+          <h3>Address</h3>
+          <p>Kathmandu, Nepal</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-form-section">
+      <form action="#" method="POST" class="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email address" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer">
+      <div class="container">
+        <div class="content">
+          <section class="newsletter-section">
+            <h2 class="section-title">Newsletter</h2>
+            <p>Stay up to date with all the latest from TechPulse</p>
+
+            <form class="newsletter-form">
+              <div class="form-group">
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  placeholder="Email *" 
+                  required
+                >
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="subscribe" required>
+                <label for="subscribe">
+                  Yes, subscribe me to your newsletter <span class="required">*</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn">Join</button>
+            </form>
+          </section>
+
+          <section class="contact-section">
+            <h2 class="section-title">Talk to Us</h2>
+
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <div class="contact-text">9848795482</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div class="contact-text">
+                  <a href="mailto:info@mysite.com">TechPulse@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="contact-text">
+                  500 Kathmandu.<br>
+                  Baneshwor, VR 7899
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="social-section">
+              <h3 class="social-title">Follow Us</h3>
+              <div class="social-icons">
+                <div class="social-icon instagram">
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="social-icon facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-icon twitter">
+                  <i class="fab fa-twitter"></i>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="customModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <p id="modalMessage">This is a message</p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const modal = document.getElementById('customModal');
+    const modalMessage = document.getElementById('modalMessage');
+    const closeButton = document.querySelector('.close-button');
+
+    function showModal(message) {
+      modalMessage.textContent = message;
+      modal.classList.remove('hidden');
+    }
+
+    closeButton.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.querySelector('#name').value.trim();
+      const email = document.querySelector('#email').value.trim();
+      const message = document.querySelector('#message').value.trim();
+
+      if (!name || !email || !message) {
+        showModal('Please fill in all fields.');
+        return;
+      }
+
+      showModal(`Thank you, ${name}! Your message has been sent.`);
+      this.reset();
+    });
+
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const emailInput = this.querySelector('.form-control').value.trim();
+      const isChecked = this.querySelector('#subscribe').checked;
+
+      if (!emailInput || !isChecked) {
+        showModal('Please enter your email and agree to subscribe.');
+        return;
+      }
+
+      showModal('You have successfully subscribed to our newsletter!');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

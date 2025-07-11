@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - TechPulse</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="1_style.css" />
+
+</head>
+<body>
+  <header>
+    <div class="logo">TechPulse</div>
+    <nav>
+      <ul>
+        <li><a href="1_index.html">Home</a></li>
+        <li><a href="2_about.html">About Us</a></li>
+        <li><a href="4_gallary.html" class="active">Gallery</a></li>
+        <li><a href="3_product.html">Shop Now</a></li>
+        <li><a href="5_contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery-heading">
+      <h1>Explore Our Tech Gallery</h1>
+      <p>Discover the latest innovations and tech products in action.</p>
+    </section>
+
+    <!--SLIDER START -->
+    <section class="slider">
+      <div class="slides">
+        <img src="new image2.jpg" alt="Smart Watch" class="slide active">
+        <img src="new image3.jpg" alt="Wireless Earbuds" class="slide">
+        <img src="new image4.jpg" alt="Smartphone" class="slide">
+        <img src="new image5.jpg" alt="Smart Home Device" class="slide">
+        <img src="new image6.webp" alt="Portable Speaker" class="slide">
+        <img src="ne" alt="Tech Display" class="slide">
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </section>
+    <!--SLIDER END -->
+  </main>
+
+  <!-- (footer remains unchanged) -->
+  <footer>
+    <div class="footer">
+        <div class="container">
+        <div class="content">
+            <section class="newsletter-section">
+                <h2 class="section-title">Newsletter</h2>
+                <p>Stay up to date with all the latest from TechPulse</p>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email *" required>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="subscribe" required>
+                        <label for="subscribe">Yes, subscribe me to your newsletter <span class="required">*</span></label>
+                    </div>
+                    <button type="submit" class="btn">Join</button>
+                </form>
+            </section>
+            <section class="contact-section">
+                <h2 class="section-title">Talk to Us</h2>
+                <div class="contact-info">
+                    <div class="contact-item"><div class="contact-text">9848795482</div></div>
+                    <div class="contact-item"><div class="contact-text"><a href="mailto:info@mysite.com">TechPulse@gmail.com</a></div></div>
+                    <div class="contact-item"><div class="contact-text">500 Kathmandu.<br>Baneshwor, VR 7899</div></div>
+                </div>
+                <div class="divider"></div>
+                <div class="social-section">
+                    <h3 class="social-title">Follow Us</h3>
+                    <div class="social-icons">
+                        <div class="social-icon instagram"><a href="#"><i class="fab fa-instagram"></i></a></div>
+                        <div class="social-icon facebook"><i class="fab fa-facebook-f"></i></div>
+                        <div class="social-icon twitter"><i class="fab fa-twitter"></i></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    </div>
+  </footer>
+
+  <!-- SLIDER SCRIPT -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    });
+
+  // autoplay every 5 seconds
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }, 5000);
+  </script>
+</body>
+</html>
